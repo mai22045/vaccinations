@@ -1,8 +1,13 @@
 package gr.uom.vaccination.model;
 
+
+import javax.persistence.Entity;
+
+@Entity
 public class Center {
 
     private String code;
+
     private String address;
 
     public String getCode() {

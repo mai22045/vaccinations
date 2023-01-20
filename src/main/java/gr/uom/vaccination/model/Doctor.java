@@ -3,8 +3,8 @@ package gr.uom.vaccination.model;
 public class Doctor {
 
     private Integer amka;
-    private String onoma;
-    private String eponymo;
+    private String name;
+    private String surname;
 
     public Integer getAmka() {
         return amka;
@@ -14,19 +14,19 @@ public class Doctor {
         this.amka = amka;
     }
 
-    public String getOnoma() {
-        return onoma;
+    public String getName() {
+        return name;
     }
 
-    public void setOnoma(String onoma) {
-        this.onoma = onoma;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEponymo() {
-        return eponymo;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setEponymo(String eponymo) {
-        this.eponymo = eponymo;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

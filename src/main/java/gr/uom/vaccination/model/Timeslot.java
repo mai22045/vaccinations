@@ -7,6 +7,8 @@ public class Timeslot {
     private Timestamp start;
     private Timestamp end;
 
+    private Doctor doctor;
+
     public Timestamp getStart() {
         return start;
     }
