@@ -1,32 +1,93 @@
 package gr.uom.vaccination.model;
 
+import java.util.Optional;
+
+import jakarta.persistence.*;
+
+@Entity
 public class Appointment {
 
-    private Timeslot timeslot;
-    private Citizen citizen;
-    private Doctor doctor;
-
-    public Timeslot getTimeslot() {
-        return timeslot;
+	@Id
+	@SequenceGenerator(name = "appointment_seq", sequenceName = "appointment_seq", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "appointment_seq")
+	@Column(name = "id", nullable = false)
+	private Long id;
+	private Integer doctorAmka;
+    private Long timeslotId;
+    private Integer citizenAmka;
+    
+	@Transient
+	private Optional<Citizen> citizen;
+	@Transient
+	private Optional<Timeslot> timeslot;
+	@Transient
+	private Optional<Doctor> doctor;
+    
+    public Appointment() {
+    	
     }
+    
+	public Appointment(Long timeslot, Integer citizen, Integer doctor) {
+		this.timeslotId = timeslot;
+		this.citizenAmka = citizen;
+		this.doctorAmka = doctor;
+	}
 
-    public void setTimeslot(Timeslot timeslot) {
-        this.timeslot = timeslot;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Citizen getCitizen() {
-        return citizen;
-    }
+	public Long getTimeslot() {
+		return timeslotId;
+	}
 
-    public void setCitizen(Citizen citizen) {
-        this.citizen = citizen;
-    }
+	public void setTimeslot(Long timeslot) {
+		this.timeslotId = timeslot;
+	}
 
-    public Doctor getDoctor() {
-        return doctor;
-    }
+	public Integer getCitizen() {
+		return citizenAmka;
+	}
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
+	public void setCitizen(Integer citizen) {
+		this.citizenAmka = citizen;
+	}
+
+	public Integer getDoctor() {
+		return doctorAmka;
+	}
+
+	public void setDoctor(Integer doctor) {
+		this.doctorAmka = doctor;
+	}
+
+	public Optional<Citizen> getAppointmentCitizen() {
+		return citizen;
+	}
+
+	public void setAppointmentCitizen(Optional<Citizen> c) {
+		this.citizen = c;
+	}
+
+	public Optional<Timeslot> getAppointmentTimeslot() {
+		return timeslot;
+	}
+
+	public void setAppointmentTimeslot(Optional<Timeslot> t) {
+		this.timeslot = t;
+	}
+
+	public Optional<Doctor> getAppointmentDoctor() {
+		return doctor;
+	}
+
+	public void setAppointmentDoctor(Optional<Doctor> d) {
+		this.doctor = d;
+	}
+	
+	@Override
+	public String toString() {
+		return "Appointment [ doctor: " + doctorAmka +  ", citizen: " + citizenAmka + ", timeslot: " + timeslotId + "]";
+	}
+	
 }

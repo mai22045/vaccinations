@@ -1,16 +1,24 @@
 package gr.uom.vaccination.model;
 
-
-import javax.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 public class Center {
 
+	@Id
     private String code;
-
     private String address;
+    
+    public Center() {
+    	
+    }
 
-    public String getCode() {
+    public Center(String code, String address) {
+		this.code = code;
+		this.address = address;
+	}
+
+	public String getCode() {
         return code;
     }
 
