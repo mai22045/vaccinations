@@ -1,28 +1,43 @@
 package gr.uom.vaccination.model;
 
 import java.sql.Timestamp;
+import jakarta.persistence.*;
 
+@Entity
 public class Vaccination {
 
-    private Citizen citizen;
-    private Doctor doctor;
-    private Timestamp vaccinationDate;
+	@Id
+	@Column(name = "citizen_amka", nullable = false)
+	private Integer citizenAmka;
+	private Timestamp vaccinationDate;
+    private Integer doctorAmka;
     private Timestamp expiryDate;
+    
+    public Vaccination() {
+    	
+    }
+    
+    public Vaccination(Timestamp vaccinationDate, Integer citizenAmka, Integer doctorAmka, Timestamp expiryDate) {
+		this.vaccinationDate = vaccinationDate;
+		this.citizenAmka = citizenAmka;
+		this.doctorAmka = doctorAmka;
+		this.expiryDate = expiryDate;
+	}
 
-    public Citizen getCitizen() {
-        return citizen;
+	public Integer getCitizen() {
+        return citizenAmka;
     }
 
-    public void setCitizen(Citizen citizen) {
-        this.citizen = citizen;
+    public void setCitizen(Integer citizen) {
+        this.citizenAmka = citizen;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Integer getDoctor() {
+        return doctorAmka;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctor(Integer doctor) {
+        this.doctorAmka = doctor;
     }
 
     public Timestamp getVaccinationDate() {

@@ -1,14 +1,30 @@
 package gr.uom.vaccination.model;
 
-public class Citizen {
+import jakarta.persistence.*;
 
-    private Integer afm;
+@Entity
+public class Citizen {
+	
+	@Id
     private Integer amka;
+    private Integer afm;
     private String name;
     private String surname;
     private String email;
+    
+    public Citizen() {
+    	
+    }
 
-    public Integer getAfm() {
+    public Citizen(Integer amka, Integer afm, String name, String surname, String email) {
+		this.amka = amka;
+		this.afm = afm;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+	}
+
+	public Integer getAfm() {
         return afm;
     }
 
